@@ -1,0 +1,20 @@
+body{
+	background-color: purple;
+}
+
+.stopwatch{
+	background-color: white;
+	width: 50%;
+	margin: auto;
+	height: 25vh;
+	padding-top: 10px;
+	margin-top:15%;
+	padding-bottom: 20px;
+}
+
+button{
+	background-color: white;
+	border:1px solid black;
+	width: 100px;
+	height: 30px;
+}
