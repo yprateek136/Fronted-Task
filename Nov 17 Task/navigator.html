@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgCJEMl8pPPb6fkGNZmx3jYAaGMYmVFJM&callback=&libraries=&v=weekly"  defer>
+</script>
+    <style>
+    	*{
+    		margin:0;
+    		padding:0
+    	}
+    	#map{
+    		height :500px;
+    		width: 100%;
+    	}
+    </style>
+  </head>
+  <body onload="loadmap()" >
+  	<h1>Google Map</h1>
+  	<div id="map"></div>
+  	<script>
+      var map="";
+      function loadmap(){
+        console.log("IN");
+      var location = { lat : 22.3511148 , lng:78.6677428 };
+       map=new google.maps.Map(document.getElementById("map"),
+        {
+          zoom:14,
+          center:location,
+        });
+       var marker=new google.maps.Marker({
+          position:location,
+          map:map,
+        });
+        console.log(location);
+      }
+   navigator.geolocation.getCurrentPosition(showPosition);
+   function showPosition(position) {
+       var lat = position.coords.latitude;
+       var lng = position.coords.longitude;
+       console.log(lat,lng);
+       initMap(lat,lng);
+    }
+     
+      function initMap(lt,ln) {
+        
+        var latlng = { lat: lt, lng: ln };
+        /*var map=new google.maps.Map(document.getElementById("map"),
+  			{
+  				zoom:14,
+  				center:latlng
+  			});*/
+  			var marker=new google.maps.Marker({
+  				position:latlng,
+  				map:map,
+  			});
+        map.setZoom(16);
+        map.panTo(marker.position);
+
+
+  		}
+  	</script>
+	
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Json Task</title>
+	<style type="text/css">
+		table,th,td {
+  border : 1px solid black;
+  border-collapse: separate;
+  border-height:50px;
+}
+th,td {
+  padding: 3px;
+}
+	</style>
+</head>
+<body>	
+	 <h1>Json and ajax</h1>
+	 <input type="button" name="name" onclick="loadDoc()" value="click" />
+<div>
+	<ul id="demo">
+		 <li>
+			<p></p>
+			<p></p>
+		</li> 
+	</ul>
+</div>
+ <script type="text/javascript">
+ 	
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let resp = JSON.parse(this.responseText);
+      const url = "https://www.pennydia.com/attachments/communityimages/"
+      let content="";
+      	
+		for(let i=0 ;i<=20;i++){
+			
+			 //content+= resp[i].communityname+"<br>";
+
+			 content+=`
+				<table border="1">
+
+					<tr>
+						<td>						
+								<b>Id</b>						
+						</td>
+								
+						<td>
+								<b>user_id</be>
+						</td>
+
+						<td>
+								<b>communitycategory</b>
+						</td>
+
+						<td>						
+							<b>CommunityName</b>						
+						</td>
+
+						<td>					
+								<b>Image</b>					
+						</td>
+						 	 
+					</tr>	
+
+					<tr>
+						<td>						
+								<p>${resp[i].id}</p>						
+						</td>
+
+						<td>
+								<p>${resp[i].user_id}</p>
+						</td>
+
+						<td>						
+							<p>${resp[i].communitycategory}</p>						
+						</td>
+
+						<td>						
+								<p>${resp[i].communityname}</p>						
+						</td>
+
+						<td>					
+								<img width="100px" height="100px" src="${url+resp[i].communityimage}" />		
+						</td>
+						 	 
+					</tr>	
+				</table>	 
+			 `;      		
+		}
+		document.getElementById("demo").innerHTML = content;
+    }
+  };
+  xhttp.open("GET", "https://www.pennydia.com/Communities/getCommunities", true);
+  xhttp.send();
+}
+</script>
+</body>
+</html>
