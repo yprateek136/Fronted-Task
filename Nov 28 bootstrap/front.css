@@ -1,0 +1,49 @@
+.bgimg{
+	background-image: url(photo2.jpg);
+	width: 100%;
+	background-size: cover;
+	height: 58rem;
+  background-repeat: no-repeat;
+}
+header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+
+}
+
+.dotcolorchange{
+  list-style: none;
+}
+
+.dotcolorchange li::before {
+  content: "\2022";
+  color: green;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  /*margin-left: -1em;*/
+}
+.fa-file-text,.fa-line-chart{
+	margin: 0 -5em;
+}
+.tdown{
+  margin-top: 200px;
+}
+.down{
+  margin-top: 300px;
+}
+.hieght{
+  font-size: 100px;
+}
+
+/*@media (min-width: 768px){
+.dotcolorchange{
+  font-size: 50px;
+}
+
+
+
+
+}*/
