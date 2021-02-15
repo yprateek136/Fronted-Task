@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="extenal.css">
+</head>
+<style>
+	.figure{
+    	width: 10%;
+   	 	border-radius: 50%;
+ 		margin-top: 40px;
+ 		margin-right:190px;
+
+	}
+</style>
+
+<body>
+
+<div class="header">
+		<center><form action="" method="post" name="login_info" style="background-color: LightCyan; padding: 10px;" onSubmit=" return validate()">
+<!--//////////Change profile pic////////////////-->
+				<h2><b>Login form</b></h2>
+				<div class="figure">
+					<img src='img_avatar2.png' id="img" ><br><br>
+					<input type="file" style="margin-left: 77px;" id="button">
+				</div>
+			<div></div>
+				<label></label><br>
+				<input type="text" name="name" value="" maxlength="20" placeholder="Enter your name" style="border-radius: 10px;"><br>
+				<label></label><br>
+				<input type="email" name="email" value="" placeholder="Enter your email" style="border-radius: 10px;"><br>
+				<label></label><br>
+				<input type="password" name="password" id="password"  value="" placeholder="Enter your password"style="border-radius: 10px;"><br>
+				<progress value="0" max="100" id="strength" style="width: 330px "></progress><br>
+
+				<!-- <div>	
+				  	<center>
+					  	<table border="1"; cellpadding="0" cellspacing="0" class="tableColor"  >
+							<tr>
+								<th id="Weak">Weak</th>
+								<th id="Medium">Medium</th>
+								<th id="Better">Better</th>
+							</tr>
+						</table>
+					</center>			
+				</div><br> -->
+				<button type="submit">Submit</button><br><br>
+			</div>	
+		</form>
+		</center>
+</div>		
+
+
+
+
+
+<script type="text/javascript">
+	//let card=document.getElementById('card')
+	let img=document.getElementById('img')
+	let img1=document.getElementById('img')
+	let button=document.getElementById('button')
+	button.addEventListener('change',function(){
+	        	// body...
+	if(this.files[0].type!='image/jpeg' && this.files[0].type!='image/png' && this.files[0].type!='image/gif'){
+	        alert("Please upload another image");
+	        }else{
+				img1.style.display='block';
+    			button.style.visibility= 'hidden';		        		
+	        	img.src=URL.createObjectURL(this.files[0]);
+	        }
+		 })
+
+
+	        function validate(){
+
+
+	        	var name =document.login_info.name.value;
+	        	var email =document.login_info.email.value;
+	        	var password=document.login_info.password.value;
+	        	var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;	        	
+	        	var a =/^[A-Za-z ]+$/;
+
+	        	if (name.length==""){
+	        		alert("Please fill user name");
+	        		return false;
+	        	}
+	        	if (name.match(a)){
+	        		true;	
+	        	}else{
+	        			alert("only alphabet character are allowed");
+	        			return flase;
+	        		}	        	
+	        	if (name.length<=2){
+	        		alert("** user name must be 3 character");
+	        		return false;
+	        	}
+	        	if (name.length>20){
+	        		alert("** user name less than 20 character");
+	        		return false;
+	        	}
+
+	        	//for email validation
+	        	
+	        	if(email.length==""){
+	        		alert("Email is required");
+	        		email.focus();
+	        		return false;
+	        	}
+	        	console.log(email);	
+	        	if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+	        		//true;
+	        		console.log("IN");	
+	        	}
+	        	else{
+	        		alert("You have entered an invalid email address!");
+					 return false;
+	        	}
+
+	        	//For Password validation
+
+	        	if(password.length==""){
+	        		alert("please fill password");
+	        		return false;
+	        	}
+
+	        	if(password.length<=5){
+	        		alert("password like as At least 1 uppercase character/At least 1 lowercase character/At least 1 digit/At least 1 special character/Minimum 8 characters.");
+	        		return false;
+	        	}
+
+	        	if(password.match(passw)) 
+				{ 
+					return true;
+				}
+				else
+				{ 
+					alert("please enter a strong password like Upper case ,lower case and special character");
+					return false;
+				}
+	        	
+	        }
+
+		var pass=document.getElementById("password")
+		pass.addEventListener('keyup',function() {
+			checksPassword(pass.value)
+		})
+		function checksPassword(password){
+			var strengthBar = document.getElementById("strength")
+			var strength=0;
+			if(password.match(/[a-zA-Z0-9][a-zA-Z0-9]+/)){
+				strength +=1
+			}
+			if(password.match(/[~<>?]+/)){
+				strength +=1
+			}
+			if(password.match(/[!@$%^&*()]+/)){
+				strength +=1
+			}
+			if(password.length > 5){
+				strength +=1
+			}
+			switch(strength){
+				case 0: strengthBar.value = 20;
+				        break
+				case 1: strengthBar.value = 40;
+				        break
+				case 2: strengthBar.value = 60;
+				        break
+				case 3: strengthBar.value = 80;
+				        break
+				case 4: strengthBar.value = 100;
+				        break        
+			}
+	}
+
+</script>
+
+
+
+</body>
+</html>

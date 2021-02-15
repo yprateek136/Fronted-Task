@@ -1,0 +1,49 @@
+form {border: 3px solid #f1f1f1;}
+body{	background-color: #80ced6;}
+
+.header{
+	margin-left: 380px; 
+	margin-right: 380px;
+	padding: 90px;
+
+	
+
+}
+#img{
+	width: 200px;
+	border-radius: 50%;
+	height:200px ;
+	margin-top: ;
+	margin-left: 39%;
+}
+
+.testbox b{
+	border-bottom: 1px solid #4caf50;
+}
+.class{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 50%;
+}
+
+
+input[type=text], input[type=email],input[type=password] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+::placeholder{
+	letter-spacing: 2px;
+	color: black;
+}
+
+.tableColor{
+  
+  margin-top: 2%;
+  background-color: white; 
+}
